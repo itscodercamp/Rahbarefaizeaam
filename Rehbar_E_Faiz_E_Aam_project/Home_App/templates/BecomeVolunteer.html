@@ -1,0 +1,94 @@
+{% load static %}
+
+<div id='volunteers' class="featured-section overlay-color-2" style="background-image: url('{% static 'images/cam.jpeg' %}');">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 mb-5 mb-md-0" >
+        <img src="{% static 'images/volunteer.jpeg' %}" alt="Image placeholder" class="img-fluid">
+      </div>
+      <div class="col-md-6 pl-md-5">
+        <div class="form-volunteer mx-4">
+          <div id="responseMessage"></div>
+
+          <h2 >Be A Volunteer Today</h2>
+          <div id="myForm">
+            <div class="form-group">
+                <div id="nameError" class="text-danger"></div>
+              <input type="text" class="form-control py-2 rounded" id="name" name="name" placeholder="Enter your name" required>
+            </div>
+            <div class="form-group">
+                <div id="emailError" class="text-danger"></div>
+              <input type="text" class="form-control py-2 rounded" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+                <div id="numberError" class="text-danger"></div>
+              <input type="number" class="form-control py-2 rounded" id="number" name="number" placeholder="Enter your Number" required>
+            </div>
+            <div class="form-group">
+              <textarea name="msg" id="msg" cols="30" rows="3" class="form-control py-2 rounded" placeholder="Write your message"></textarea>
+            </div>
+            <div class="form-group" >
+              <button type="submit" class="btn btn-white px-5 py-2 rounded" id="submitBtn" value="Send">Send</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+  $(document).ready(function () {
+    $('#submitBtn').click(function (event) {
+      event.preventDefault();
+
+      // Clear previous validation errors
+      $('#nameError, #emailError, #numberError').text('');
+
+      var name = $('#name').val();
+      var email = $('#email').val();
+      var number = $('#number').val();
+      var msg = $('#msg').val();
+
+      // Validation
+      var isValid = true;
+
+      if (!name) {
+        $('#nameError').text('Please enter your name');
+        isValid = false;
+      }
+
+      if (!email) {
+        $('#emailError').text('Please enter your email');
+        isValid = false;
+      }
+
+      if (!number) {
+        $('#numberError').text('Please enter your number');
+        isValid = false;
+      }
+
+      if (isValid) {
+        $.ajax({
+          url: '{% url "Become_volunteer" %}', // Use the URL pattern name
+          type: 'POST',
+          data: {
+            "name": name,
+            "email": email,
+            "number": number,
+            "message": msg,
+          },
+        //   dataType: 'json',
+          success: function (response) {
+            $('#responseMessage').html(response);
+          },
+          error: function (xhr, status, error) {
+            console.log(error);
+          }
+        });
+      }
+    });
+  });
+</script>

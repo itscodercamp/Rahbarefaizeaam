@@ -1,0 +1,89 @@
+
+    <style>
+        .containers {
+            text-align: center;
+            margin-top: 5px;
+            padding: 15px;
+            background-color: rgba(222, 211, 211, 0.1);
+        }
+
+        .slider-container {
+            overflow: hidden;
+            max-width: 100%;
+            position: relative;
+        }
+
+        .sliders {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slides {
+            flex: 0 0 100%;
+            padding: 3% 2%;
+            text-align: center;
+            background-color: rgba(136, 129, 129, 0.1);
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .slides {
+                padding: 2% 1%;
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .slides {
+                padding: 1% 1%;
+                font-size: 12px;
+            }
+        }
+    </style>
+
+    <div class='containers'>
+        <h3>What Does Quran Say About Charity</h3>
+        <br><br>
+
+        <div class="slider-container">
+            <div class="sliders">
+                <div class="slides">
+                    <h3 style="font-family: 'Noto Naskh Arabic', serif;">إِنَّ ٱلْمُصَّدِّقِينَ وَٱلْمُصَّدِّقَـٰتِ وَأَقْرَضُوا۟ ٱللَّهَ قَرْضًا حَسَنًۭا يُضَـٰعَفُ لَهُمْ وَلَهُمْ أَجْرٌۭ كَرِيمٌۭ (١٨)</h3>
+                    <p>Indeed, those men and women who give in charity and lend to Allah a good loan will have it multiplied for them, and they will have an honorable reward.</p>
+                    <p>57:18</p>
+                </div>
+                <div class="slides">
+                    <h3 style="font-family: 'Noto Naskh Arabic', serif;">ٱلَّذِينَ يُنفِقُونَ أَمْوَٰلَهُم بِٱلَّيْلِ وَٱلنَّهَارِ سِرًّۭا وَعَلَانِيَةًۭ فَلَهُمْ أَجْرُهُمْ عِندَ رَبِّهِمْ وَلَا خَوْفٌ عَلَيْهِمْ وَلَا هُمْ يَحْزَنُونَ (٢٧٤)</h3>
+                    <p>Those who spend their wealth in charity day and night, secretly and openly—their reward is with their Lord, and there will be no fear for them, nor will they grieve.</p>
+                    <p>2:274</p>
+                </div>
+                <div class="slides">
+                    <h3 style="font-family: 'Noto Naskh Arabic', serif;">لَن تَنَالُوا۟ ٱلْبِرَّ حَتَّىٰ تُنفِقُوا۟ مِمَّا تُحِبُّونَ ۚ وَمَا تُنفِقُوا۟ مِن شَىْءٍۢ فَإِنَّ ٱللَّهَ بِهِۦ عَلِيمٌۭ (٩٢)</h3>
+                    <p>You will never achieve righteousness until you donate some of what you cherish. And whatever you give is certainly well known to Allah.</p>
+                    <p>3:92</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let currentSlide = 0;
+            const slider = document.querySelector('.sliders');
+            const numSlides = slider.children.length;
+
+            function goToSlide(index) {
+                currentSlide = index;
+                const translateX = -100 * currentSlide + '%';
+                slider.style.transform = 'translateX(' + translateX + ')';
+            }
+
+            // Automatic slide change (adjust the interval as needed)
+            setInterval(function () {
+                currentSlide = (currentSlide + 1) % numSlides;
+                goToSlide(currentSlide);
+            }, 7000); // Change slide every 5 seconds (adjust as needed)
+        });
+    </script>

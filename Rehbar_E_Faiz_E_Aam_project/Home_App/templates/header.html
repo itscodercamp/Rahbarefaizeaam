@@ -1,0 +1,57 @@
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+  <div class="container">
+      <a class="navbar-brand" href="{% url 'home' %}">Rahbar E Faiz</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="oi oi-menu"></span> Menu
+      </button>
+
+      <div class="collapse navbar-collapse" id="ftco-nav">
+          <ul class="navbar-nav ml-auto">
+              <li class="nav-item "><a href="{% url 'home' %}" class="nav-link">Home</a></li>
+              <li class="nav-item"><a href="{% url 'about' %}" class="nav-link">About</a></li>
+              <li class="nav-item"><a href="{% url 'gallery' %}" class="nav-link">Gallery</a></li>
+              <li class="nav-item"><a href="{% url 'donate' %}" class="nav-link">Donate</a></li>
+              <li class="nav-item"><a href="{% url 'blog' %}" class="nav-link">Blog</a></li>
+              <li class="nav-item"><a href="{% url 'Services' %}" class="nav-link">Services</a></li>
+              <li class="nav-item"><a href="{% url 'contact' %}" class="nav-link">Contact</a></li>
+          </ul>
+      </div>
+  </div>
+</nav>
+
+<!-- Your content goes here -->
+
+  <!-- END nav -->
+  <style>
+    .navbar .navbar-collapse .navbar-nav .nav-item .nav-link:hover {
+      color: rgb(136, 255, 0) !important; /* Apply yellow color on hover */
+      border-bottom: 2px solid rgb(136, 255, 0); /* Apply underline to active link */
+
+    }
+    .transparent-bg {
+      background-color: transparent;
+      border: none;
+  }
+  .dropdown-item{
+      color:white;
+  }
+  </style>
+  <script>
+ // Function to update active link based on current hash
+ function updateActiveLink() {
+      const hash = window.location.hash;
+      const navLinks = document.querySelectorAll('.nav-link');
+
+      navLinks.forEach(link => {
+        if (link.getAttribute('href') === hash) {
+          link.classList.add('active');
+        } else {
+          link.classList.remove('active');
+        }
+      });
+    }
+
+    // Call the function on page load and when hash changes
+    window.addEventListener('load', updateActiveLink);
+    window.addEventListener('hashchange', updateActiveLink);
+  </script>

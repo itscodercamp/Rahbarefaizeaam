@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<style>
+  .card-img-top {
+      object-fit: cover;
+      height: 200px; /* Adjust the height as needed */
+  }
+  .card:hover {
+    background-color: #f8f9fa; /* Change the background color on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a box shadow on hover */
+    transition: background-color 0.3s, box-shadow 0.3s; /* Add a smooth transition */
+}
+</style>
+
+{% block body %}
+<div class="block-31" style="position: relative;">
+  <div class="owl-carousel loop-block-31 ">
+    <div class="block-30 block-30-sm item" style="background-image: url('{% static 'images/services.gif' %}');" data-stellar-background-ratio="0.5">
+      <div class="container">
+        <div class="row align-items-center justify-content-center">
+          <div class="col-md-7 text-center">
+            <h2 class="heading">All Our Services </h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<div class="container mt-5">
+
+  <div class="row">
+
+      <!-- Service Card 1 -->
+      <div class="col-lg-4 col-md-6 mb-4">
+          <div class="card">
+              <img src="https://source.unsplash.com/800x600/?technology" class="card-img-top" alt="Service 1">
+              <div class="card-body">
+                  <h5 class="card-title">Islamic Books</h5>
+                  <p class="card-text">Description of Service 1 goes here.</p>
+              </div>
+          </div>
+      </div>
+
+      <!-- Service Card 2 -->
+      <div class="col-lg-4 col-md-6 mb-4">
+          <div class="card">
+              <img src="https://source.unsplash.com/800x600/?business" class="card-img-top" alt="Service 2">
+              <div class="card-body">
+                  <h5 class="card-title">Authentic Hadith</h5>
+                  <p class="card-text">Description of Service 2 goes here.</p>
+              </div>
+          </div>
+      </div>
+
+      <!-- Service Card 3 -->
+      <div class="col-lg-4 col-md-6 mb-4">
+          <div class="card">
+              <img src="https://source.unsplash.com/800x600/?design" class="card-img-top" alt="Service 3">
+              <div class="card-body">
+                  <h5 class="card-title">learn Arabic</h5>
+                  <p class="card-text">Description of Service 3 goes here.</p>
+              </div>
+          </div>
+      </div>
+
+  </div>
+
+</div>
+
+{% include 'donationEx.html' %}
+
+{% endblock body %}

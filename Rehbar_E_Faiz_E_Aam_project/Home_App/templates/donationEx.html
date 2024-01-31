@@ -1,0 +1,204 @@
+{% load static %}
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<style>
+    /* Apply a blur effect */
+    .disabled {
+        position: relative;
+        pointer-events: none;
+        filter: blur(3px); /* You can adjust the blur radius */
+        opacity: 0.5; /* Adjust the opacity to your preference */
+    }
+
+    /* Centered text message */
+    .disabled-message {
+        position: absolute;
+        top: 45%;
+        left: 40%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        color: black; /* Adjust text color */
+        font-size: 25px; /* Adjust font size */
+        z-index: 1;
+    }
+</style>
+  <div class="site-section ">
+    <div class="container " >
+  
+      <div class="card mt-5 ">
+          <div class="card-header text-center text-light" style="background-color: #36af77;">
+            Your Donation Fill Someone's Need
+          </div>
+          <div class="card-body">
+              <div class="row ">
+                  <div class="disabled-message">This Service is disabled Only QR Available </div>
+                  <div class="col-md-8 disabled">
+                    <div class="row ">
+                      
+                      <div class="col-md-6 ">
+                          
+                          <input type="text" name="name" placeholder="Enter your Name" class="form-control my-3 ">
+                        </div>
+                        <div class="col-md-6">
+                            <input type="email" name="email" placeholder="Enter your Email" class="form-control my-3 ">
+                        </div>
+  <div class="col-md-9">
+      <input type="number" name="number" placeholder="Enter your Number" class="form-control my-3 ">
+  </div>
+  <div class="col-md-4">
+      <select class="form-select my-3" name="country" aria-label="Default select example">
+          <option selected>Select your Country</option>
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+        </select>
+  </div>
+  <div class="col-md-4">
+      <select class="form-select my-3" name="Event" aria-label="Default select example">
+          <option selected>Use Were It Needs</option>
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+        </select>
+  </div>
+  
+  <div class="col-md-4">
+      <input type="integer" name="amount" placeholder="Enter your Amount" class="form-control my-3 ">
+  </div>
+  <div class="col-md-12">
+      <div class="form-check mt-4 form-check-inline">
+          <label class="form-check-label" for="inlineCheckbox1">Select Custom Amount</label>
+        </div>
+        <div class="form-check mt-4 form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+            <label class="form-check-label" for="inlineCheckbox1">500</label>
+          </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+          <label class="form-check-label" for="inlineCheckbox2">1000</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3" >
+          <label class="form-check-label" for="inlineCheckbox3">1500</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3" >
+          <label class="form-check-label" for="inlineCheckbox3">2000</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3" >
+          <label class="form-check-label" for="inlineCheckbox3">3000</label>
+        </div>
+      </div>
+  <div class="col-md-12 text-center">
+      <!-- <input type="text" name="amount" placeholder="Name" class="form-control my-3 "> -->
+      <button type="button" class="btn btn-success mt-3 text-center" id="donateButton">Donate now</button>
+    </div>
+  
+  
+  
+      </div></div>
+      <div class="col-md-4 text-center">
+          <div class="row">
+              <div class="col-md-12 mb-3"><h1 class="text-center mx-auto">Pay using QR Code</h1></div>
+              <div class="col-md-12 mb-3"><img height="155px" width="155px" src="{% static '\images\QR\qr.jpg' %}" alt=""></div>
+              <input type="number" name="AmountQr" placeholder="Enter Amount" id="myInput" class="form-control my-3" oninput="updatePaymentLink()">
+              <div class="col-md-12 mb-5"><a href="upi://pay?pa=paytmqrhnba42ds49@paytm&cn=CAD&pn=Paytm" id="myButton" class="btn btn-info text-white ">Click to Pay</a></div> 
+              <!-- &am=50.00 use this inside url after paytm and before cn to add a fix amount of money -->
+          </div>
+      </div>
+  </div>
+
+        </div>
+        </div>
+        <br><br></div><script>
+          function isMobileView() {
+              return window.innerWidth <= 768; // Example breakpoint for mobile view
+          }
+  
+          // Function to toggle the button's visibility
+          function toggleButtonVisibility() {
+              const button = document.getElementById('myButton');
+              const button1 = document.getElementById('myInput');
+  
+              if (isMobileView()) {
+                  button.style.display = 'block'; // Show the button
+              } else {
+                  button.style.display = 'none'; // Hide the button
+              }
+  
+              if (isMobileView()) {
+                  button1.style.display = 'block'; // Show the button
+              } else {
+                  button1.style.display = 'none'; // Hide the button
+              }
+          }
+  
+          // Initial check and add a resize event listener
+          toggleButtonVisibility();
+          window.addEventListener('resize', toggleButtonVisibility);
+      </script>
+    <script>
+        function updatePaymentLink() {
+            // Get the input element by its ID
+            var amountInput = document.getElementById("myInput");
+        
+            // Get the value entered in the input field
+            var enteredAmount = amountInput.value;
+        
+            // Check if the enteredAmount is blank or not a positive number
+            if (enteredAmount === "" || isNaN(enteredAmount) || enteredAmount <= 0) {
+                // Set the payment link to the default URL when the input is blank or not a positive number
+                var updatedPaymentLink = "upi://pay?pa=paytmqrhnba42ds49@paytm&cn=CAD&pn=Paytm";
+            } else {
+                // Construct the updated payment link with the entered amount when it's a positive number
+                var updatedPaymentLink = `upi://pay?pa=paytmqrhnba42ds49@paytm&am=${enteredAmount}&cn=CAD&pn=Paytm`;
+            }
+        
+            // Get the payment link element by its ID
+            var paymentLink = document.getElementById("myButton");
+        
+            // Update the href attribute of the payment link
+            paymentLink.href = updatedPaymentLink;
+        }
+        </script>
+        
+        <script>
+            $(document).ready(function() {
+              // Attach a click event to the donate button
+              $("#donateButton").click(function() {
+                // Collect form data
+                var name = $("name").val();
+                var email = $("email").val();
+                var number = $("number").val();
+                var country = $("country").val();
+                var event = $("Event").val();
+                var amount = $("amount").val();
+          
+          
+                // Make an AJAX request
+                $.ajax({
+                  type: "POST",
+                  url: "{% url 'donate_form_details' %}",
+                  data: {
+                  'name': name,
+                  'email': email,
+                  'number': number,
+                  'country': country,
+                  'event': event,
+                  'amount': amount,
+                },
+                  success: function(response) {
+                    console.log("Form data sent successfully:", response);
+                    alert('Successfully Submited form')
+                    // Optionally, you can handle the response here
+                  },
+                  error: function(error) {
+                    console.error("Error sending form data:", error);
+                    // Optionally, you can handle the error here
+                  }
+                });
+              });
+            });
+          </script>
+          
