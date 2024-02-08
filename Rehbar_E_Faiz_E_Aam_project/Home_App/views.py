@@ -7,11 +7,12 @@ from .models import *
 
 # Create your views here.
 def Home_Page(request):
-    urlType = "upi://pay?pa=paytmqrhnba42ds49@paytm&cn=CAD&pn=Paytm"
-    urlType1 = "upi://pay?pa=paytmqrhnba42ds49@paytm&am="
-    urlType2 = "&cn=CAD&pn=Paytm"
+    fundraises = FundRaise.objects.all()
+    blog_content = Blog.objects.all()
 
-    return render(request,'index.html')
+    context = {'fundraises':fundraises,'data':blog_content}
+
+    return render(request,'index.html',context)
 
 def About_Page(r):
     return render(r,'about.html')
@@ -37,7 +38,9 @@ def Donate_Page(r):
     return render(r,'donate.html')
 
 def Gallery_Page(r):
-    return render(r,'gallery.html')
+    images = Gallery.objects.all()
+    context = {'images':images}
+    return render(r,'gallery.html',context)
 
 def Services(r):
     return render(r,'donation.html')

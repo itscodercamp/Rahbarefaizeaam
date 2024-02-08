@@ -100,3 +100,23 @@ class DonationForm(models.Model):
 
     def __str__(self):
         return self.name
+
+
+
+class Gallery(models.Model):
+    title = models.CharField(max_length=100)
+    image = models.ImageField(upload_to='images/Gallery/')
+    # description = models.TextField()
+
+    def __str__(self):
+        return self.title
+    
+
+class FundRaise(models.Model):
+    title = models.CharField(max_length=100)
+    Image = models.ImageField(upload_to='images/FundRaise/')
+    created_at = models.DateTimeField(auto_now_add=True)
+    description = models.TextField()
+
+    def __str__(self):
+        return self.title

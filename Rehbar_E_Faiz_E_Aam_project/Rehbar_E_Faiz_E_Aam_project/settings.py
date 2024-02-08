@@ -25,13 +25,12 @@ SECRET_KEY = 'django-insecure-$e^6n#szbtr3%a9!2tcj*zo^-$!b=tz2kiw_5l4n4p%3n+q4rk
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://5533-106-193-184-47.ngrok-free.app ','*']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
 
 INSTALLED_APPS = [
-    'ckeditor',
     'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -40,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Home_App',
+
 ]
 
 MIDDLEWARE = [
@@ -50,7 +50,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
 ]
+
+
 
 ROOT_URLCONF = 'Rehbar_E_Faiz_E_Aam_project.urls'
 
@@ -65,6 +68,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
             ],
         },
     },
@@ -84,8 +88,8 @@ DATABASES = {
 }
 
 # settings.py
-CORS_ALLOW_ORIGIN = 'https://5533-106-193-184-47.ngrok-free.app ','https://*.127.0.0.1'
-CSRF_TRUSTED_ORIGINS = ['https://5533-106-193-184-47.ngrok-free.app ','https://*.127.0.0.1']
+CORS_ALLOW_ORIGIN = 'https://2500-106-221-209-30.ngrok-free.app ','http://localhost:8000/'
+CSRF_TRUSTED_ORIGINS = ['https://2500-106-221-209-30.ngrok-free.app ','http://localhost:8000/']
 
 
 # Password validation
@@ -122,7 +126,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
@@ -132,9 +136,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 import os
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
-STATIC_URL = '/static/'
-# STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
-
-
-# Urls of paytment link here
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'Home_App/staticfiles')

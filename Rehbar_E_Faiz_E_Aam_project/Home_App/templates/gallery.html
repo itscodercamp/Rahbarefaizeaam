@@ -3,6 +3,7 @@
 
 {% block body %}
 
+
 <div class="block-31" style="position: relative;">
     <div class="owl-carousel loop-block-31 ">
       <div class="block-30 block-30-sm item" style="background-image: url('{% static 'images/cam.jpeg' %}');" data-stellar-background-ratio="0.5">
@@ -18,27 +19,28 @@
     </div>
   </div>
 
+  {% comment %} <div class="container-fluid" id="video-container">
+    <video controls autoplay muted class="img-fluid">
+        <!-- Replace 'your_video_url' with the actual URL or path of your video -->
+        <source src="{% static "videos/charity.mp4" %}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</div>
+   {% endcomment %}
+  
+  
   <div class="site-section">
     <div class="container">
       <div class="row">
+        {% for image in images %}
         <div class="col-md-4">
-          <a href="{% static 'images/img_1.jpg' %}" class="img-hover" data-fancybox="gallery">
+          <a href="{{ image.image.url }}" class="img-hover" data-fancybox="gallery">
             <span class="icon icon-search"></span>
-            <img src="{% static 'images/img_1.jpg' %}" alt="Image placeholder" class="img-fluid">
+            <img src="{{ image.image.url }}" alt="Image placeholder" class="img-fluid">
           </a>
         </div>
-        <div class="col-md-4">
-          <a href="{% static 'images/img_2.jpg' %}" class="img-hover" data-fancybox="gallery">
-            <span class="icon icon-search"></span>
-            <img src="{% static 'images/img_2.jpg' %}" alt="Image placeholder" class="img-fluid">
-          </a>
-        </div>
-        <div class="col-md-4">
-          <a href="{% static 'images/img_3.jpg' %}" class="img-hover" data-fancybox="gallery">
-            <span class="icon icon-search"></span>
-            <img src="{% static 'images/img_3.jpg' %}" alt="Image placeholder" class="img-fluid">
-          </a>
-        </div>
+        {% endfor %}
+        
        
     
       </div>
